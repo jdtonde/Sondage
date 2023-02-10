@@ -2,14 +2,14 @@ import React from 'react'
 import SondageItem from './SondageItem'
 //import PropTypes from 'prop-types'
 
-function SondageList({sondage}) {
+function SondageList({sondage,handleDelete}) {
     if(!sondage || sondage.lenght===0){
        return <p>Aucun sondage pour l'instant </p>
     }
     return (
     <div className="feedback-list">
         {sondage.map((x=>{
-            return <SondageItem key={x.id} item={x}/>
+            return <SondageItem key={x.id} item={x} handleDelete={handleDelete}/>
         }))}
     </div>
   )
