@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import SondageContext from '../context/SondageContext'
 
-function SondageStats({sondage}) {
+function SondageStats() {
+  const {sondage}=useContext(SondageContext)
     let moyenne= sondage.reduce((acc,cur)=>{ return acc + cur.rating },0) / sondage.length
 
     moyenne = moyenne.toFixed(1).replace(/[.,]0$/, '')// fixer la decimale à 1 si nombre decimal ou arrondi en retirant carctere excedant

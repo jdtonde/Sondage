@@ -2,13 +2,17 @@ import React, { useState } from 'react'
 import Card from './shared/card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
+import { useContext } from 'react'
+import SondageContext from '../context/SondageContext'
 
-function SondageForm({addSondage}) {
+function SondageForm() {
 
 const [text,setText]=useState('')
 const [message, setMessage]=useState('')
 const [rating, setRating]=useState('')
 const [isDisabled, setIsDisabled]=useState(true)
+
+const{addSondage}= useContext(SondageContext)
 
 function handleChange(e){
   if(text===''){

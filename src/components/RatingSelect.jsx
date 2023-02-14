@@ -140,5 +140,7 @@ function RatingSelect({select}) {
     </ul>
   )
 }
-
+RatingSelect.defaultProps={
+    selected:10
+}
 export default RatingSelect

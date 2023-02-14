@@ -2,8 +2,11 @@ import React from 'react'
 import SondageItem from './SondageItem'
 //import PropTypes from 'prop-types'
 //import {motion, AnimatePresence} from 'framer-motion'
+import { useContext } from 'react'
+import SondageContext from '../context/SondageContext'
 
-function SondageList({sondage,handleDelete}) {
+function SondageList() {
+  const {sondage}=useContext(SondageContext)
     if(!sondage || sondage.lenght===0){
        return <p>Aucun sondage pour l'instant </p>
     }
@@ -19,7 +22,7 @@ function SondageList({sondage,handleDelete}) {
     //             exit={{opacity:0}}
     //             >
     //                 <SondageItem key={x.id} item={x} handleDelete={handleDelete}/>
-                     
+
     //             </motion.div>
     //         }))}
     //         </AnimatePresence>
@@ -29,7 +32,7 @@ function SondageList({sondage,handleDelete}) {
     return (
     <div className="feedback-list">
         {sondage.map((x=>{
-            return <SondageItem key={x.id} item={x} handleDelete={handleDelete}/>
+            return <SondageItem key={x.id} item={x}/>
         }))}
     </div>
   )
