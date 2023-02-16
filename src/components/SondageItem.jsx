@@ -8,7 +8,7 @@ import SondageContext from '../context/SondageContext'
 
 function SondageItem({item}) {
 
-  const {deleteSondage,sondageedit}= useContext(SondageContext)
+  const {deleteSondage,editSondage}= useContext(SondageContext)
 
   return (
       <Card reverse={false}> {/*  la class css du parent va chez le parent et celle des children peut rester ici */}
@@ -16,7 +16,7 @@ function SondageItem({item}) {
         <button className="close" >
           <FaTimes color='purple' onClick={()=>deleteSondage(item.id)}/>
         </button>
-        <button className="edit"><FaEdit color='purple'/></button>
+        <button className="edit" onClick={()=>editSondage(item)}><FaEdit color='purple'/></button>
         <div className="text-display">{item.text}</div>
       </Card>
     

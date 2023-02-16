@@ -4,6 +4,7 @@ import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
 import { useContext } from 'react'
 import SondageContext from '../context/SondageContext'
+import { useEffect } from 'react'
 
 function SondageForm() {
 
@@ -12,7 +13,15 @@ const [message, setMessage]=useState('')
 const [rating, setRating]=useState('')
 const [isDisabled, setIsDisabled]=useState(true)
 
-const{addSondage}= useContext(SondageContext)
+const{addSondage,sondageedit,updatesondage}= useContext(SondageContext)
+
+ useEffect(()=>{
+  if(sondageedit.edit===true){
+    setIsDisabled(false)
+    setText(sondageedit.item.text)
+    setRating(sondageedit.item.rating)
+  }
+},[sondageedit])
 
 function handleChange(e){
   if(text===''){
@@ -35,7 +44,12 @@ if(text.trim().length>10){
     rating
 
   }
-  addSondage(newFeedBack)
+
+  if(sondageedit.edit === true){
+    updatesondage(sondageedit.item.id, newFeedBack)
+  } else{
+    addSondage(newFeedBack)
+  }
 
   setText('')
 }

@@ -32,10 +32,10 @@ const deleteSondage=(id)=>{
 const[sondageedit,setSondageedit]=useState(
     {item:{},
     edit:false}
-)
+) 
 
-//set item to be updated
-const EditSondage=(item)=>{
+//set item to be updated by changing edit to true
+const editSondage=(item)=>{
         setSondageedit({
             item,
             edit:true
@@ -43,7 +43,17 @@ const EditSondage=(item)=>{
         
 }
 
-return <SondageContext.Provider value={{sondage,deleteSondage,addSondage,sondageedit}}>
+//mettre à jour les items
+const updatesondage = (id,updItem) =>{
+  setSondage(
+    sondage.map( x => ( x.id === id ? { ...x , ...updItem }: x))
+  )
+}
+
+//As a value sondage et sondageedit sont des useStates d'où la coloration
+//editSondage quand à lui est une fonction d'activation du Edit de false en True
+//sondageedit (useState) est pour mettre le texte à editer dans le form
+return <SondageContext.Provider value={{sondage,deleteSondage,addSondage,editSondage,sondageedit,updatesondage}}>
     {children}
 </SondageContext.Provider>
 }

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect} from 'react'
+import SondageContext from '../context/SondageContext'
 
 function RatingSelect({select}) {
     const [selected,setSelected]=useState(10)
@@ -7,6 +8,12 @@ function RatingSelect({select}) {
         setSelected(+e.currentTarget.value)
         select(+e.currentTarget.value)
     }
+
+    const {sondageedit}=useContext(SondageContext)
+
+    useEffect(()=>{
+        setSelected(sondageedit.item.rating)
+    },[sondageedit])
   return (
     <ul className='rating'>
         <li>
