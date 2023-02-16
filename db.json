@@ -1,0 +1,19 @@
+{
+  "sondages": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "This items come from django backend"
+    },
+    {
+      "id": 2,
+      "rating": 9,
+      "text": "This items come from django"
+    },
+    {
+      "text": "Gooo to the backend Djangoooo",
+      "rating": 9,
+      "id": 4
+    }
+  ]
+}

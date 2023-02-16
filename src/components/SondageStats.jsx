@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import SondageContext from '../context/SondageContext'
 
@@ -16,8 +16,8 @@ function SondageStats() {
   )
 }
 
-SondageStats.propTypes={
-    sondage:PropTypes.array.isRequired
-}
+//SondageStats.propTypes={
+//    sondage:PropTypes.array.isRequired
+//}
 
 export default SondageStats

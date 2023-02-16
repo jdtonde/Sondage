@@ -4,10 +4,12 @@ import SondageItem from './SondageItem'
 //import {motion, AnimatePresence} from 'framer-motion'
 import { useContext } from 'react'
 import SondageContext from '../context/SondageContext'
+import Spinner from './shared/Spinner'
 
 function SondageList() {
-  const {sondage}=useContext(SondageContext)
-    if(!sondage || sondage.lenght===0){
+  const {sondage, isLoading}=useContext(SondageContext)
+
+    if(!isLoading && (!sondage || sondage.lenght===0)){
        return <p>Aucun sondage pour l'instant </p>
     }
 
@@ -29,15 +31,13 @@ function SondageList() {
     //     </div>
     // )
   //RETURN SANS FRAMER-MOTION
-    return (
-    <div className="feedback-list">
-        {sondage.map((x=>{
-            return <SondageItem key={x.id} item={x}/>
-        }))}
-    </div>
-  )
 
-
+  return isLoading ? <Spinner/> :(    <div className="feedback-list">
+  {sondage.map((x=>{
+      return <SondageItem key={x.id} item={x}/>
+  }))}
+</div>
+)
 }
 
 // SondageList.propTypes={
